@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { router } from "../routes/user.routes.js";
+import { dbConnection } from "../database/config.db.js";
 
 class Server {
   constructor() {
@@ -8,6 +9,8 @@ class Server {
     this.port = process.env.PORT;
     this.usuariosPath = "/api/usuarios";
 
+    // Conectar a base de datos
+    this.conectarDB();
     /*Middleawares : son funciones que van a brindar otra funcionalidad a mi webserver, en otras palabras es una funcion
     que siempre va ejecutarse cuando nosotros levantemos nuestro servidor*/
 
@@ -16,6 +19,10 @@ class Server {
 
     // Rutas de mi aplicaciòn
     this.routes();
+  }
+
+  async conectarDB() {
+    await dbConnection();
   }
 
   middlewares() {
