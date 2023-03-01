@@ -41,7 +41,8 @@ UsuarioSchema.methods.toJSON = function () {
   // funcion normal porque voy a usar el objeto this y una funcion flecha   mantiene a lo que apunta el this fuera de la misma y yo necesito que hay este el thi para que haga referencia a la instancia creada
 
   // me va a generar mi instancia pero con sus valores respectivos
-  const { __v, password, ...usuario } = this.toObject();
+  const { __v, password, _id, ...usuario } = this.toObject();
+  usuario.uid = _id;
   return usuario;
 };
 
