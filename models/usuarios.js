@@ -4,7 +4,7 @@ import mongooseHidden from "mongoose-hidden";
 const UsuarioSchema = Schema({
   nombre: {
     type: String,
-    requireç: [true, "El nombre es obligatorio"],
+    required: [true, "El nombre es obligatorio"],
   },
   correo: {
     type: String,
